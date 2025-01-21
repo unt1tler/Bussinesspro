@@ -1,39 +1,38 @@
-import { Mona_Sans as FontSans } from "next/font/google"
-import localFont from "next/font/local"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Layout } from "@/components/layout"
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Layout } from "@/components/layout";
+import "@/styles/globals.css";
 
-import "@/styles/globals.css"
-
-const fontSans = FontSans({
+const fontSans = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
-})
+  variable: "--font-sans"
+});
 
-const fontHeading = localFont({
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-heading",
-})
+const fontHeading = Inter({
+  subsets: ["latin"],
+  variable: "--font-heading"
+});
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="h-full">
       <head />
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontHeading.variable)}>
+      <body
+        className={cn(
+          "relative min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+          fontHeading.variable
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>{children}</Layout>
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
-
-
-
-import './globals.css'

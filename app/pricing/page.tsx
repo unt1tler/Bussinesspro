@@ -10,7 +10,7 @@ export default function PricingPage() {
   const { title, description, plans } = siteConfig.pages.pricing
 
   return (
-    <div className="container py-24">
+    <div className="py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function PricingPage() {
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">{title}</h1>
         <p className="mt-4 text-lg text-muted-foreground sm:text-xl">{description}</p>
       </motion.div>
-      <div className="mt-16 grid gap-8 md:grid-cols-3">
+      <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {plans.map((plan, index) => (
           <motion.div
             key={plan.name}
@@ -38,10 +38,10 @@ export default function PricingPage() {
                   <span className="text-4xl font-bold">{plan.price}</span>
                   {plan.price !== "Custom" && <span className="text-muted-foreground">/month</span>}
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-primary" />
+                      <Check className="h-5 w-5 text-primary flex-shrink-0" />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
@@ -57,4 +57,3 @@ export default function PricingPage() {
     </div>
   )
 }
-
